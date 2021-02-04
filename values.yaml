@@ -23,6 +23,7 @@ pingfederate-admin:
     SERVER_PROFILE_PATH: pf
     PF_CONSOLE_AUTHENTICATION: OIDC
     PF_ADMIN_PORT: "443"
+
   services:
     https:
      servicePort: 443
