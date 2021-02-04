@@ -1,0 +1,42 @@
+global:
+  image:
+    tag: "edge"
+  ingress:
+    enabled: true
+    addReleaseNameToHost: prepend
+    defaultDomain: ping-devops.com
+    defaultTlsSecret:
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      kubernetes.io/ingress.class: "nginx-public"
+
+pingdataconsole:
+  enabled: true
+
+pingdirectory:
+  enabled: true
+
+pingfederate-admin:
+  enabled: true  
+  envs:
+    SERVER_PROFILE_URL: https://github.com/joshuaarnold/jarnold-fintech.git
+    SERVER_PROFILE_PATH: pf
+    PF_CONSOLE_AUTHENTICATION: OIDC
+    PF_ADMIN_PORT: "443"
+  services:
+    https:
+     servicePort: 443
+     containerPort: 443
+
+pingfederate-engine:
+  enabled: true
+  envs:
+    SERVER_PROFILE_URL: https://github.com/joshuaarnold/jarnold-fintech.git
+    SERVER_PROFILE_PATH: pf
+
+
+pingaccess:
+  enabled: true
+  envs:
+    SERVER_PROFILE_URL: https://github.com/joshuaarnold/jarnold-fintech.git
+    SERVER_PROFILE_PATH: pa
